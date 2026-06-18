@@ -1,0 +1,40 @@
+
+ СПИСОК ТАБЛИЦ В БАЗЕ
+- credit_request_entity
+- order_entity
+- payment_entity
+
+ СТРУКТУРА ТАБЛИЦЫ 'credit_request_entity'
+  id - varchar(255)
+  bank_id - varchar(255)
+  created - datetime(6)
+  status - varchar(255)
+
+ ПЕРВЫЕ 5 ЗАПИСЕЙ В ТАБЛИЦЕ 'credit_request_entity'
+
+ СТРУКТУРА ТАБЛИЦЫ 'order_entity'
+  id - varchar(255)
+  created - datetime(6)
+  credit_id - varchar(255)
+  payment_id - varchar(255)
+
+ ПЕРВЫЕ 5 ЗАПИСЕЙ В ТАБЛИЦЕ 'order_entity'
+  ('109e91a0-afba-4ec3-b890-56bd64daf0ab', datetime.datetime(2026, 6, 16, 6, 32, 36, 659000), None, 'b3073798-d2c5-444a-90ad-1607fbb233af')
+  ('386116e3-6688-4258-a822-72dec41ec73f', datetime.datetime(2026, 6, 16, 6, 43, 50, 513000), None, '7e6211bb-b84d-40a1-807b-5b5bf14912db')
+  ('3be0f095-3a71-435e-a129-68137bd19b8d', datetime.datetime(2026, 6, 16, 6, 33, 25, 523000), None, 'd7dc9499-ccf3-489e-8777-2c1810973234')
+  ('4035d601-7011-480e-b734-889f205d4ee9', datetime.datetime(2026, 6, 16, 6, 41, 55, 117000), None, '22f8f7dd-368d-4cb5-a44e-f86acea72d4f')
+  ('5d35e5eb-12f9-4375-8395-920df58fef91', datetime.datetime(2026, 6, 16, 6, 6, 56, 412000), None, '618c52a6-401c-469d-90be-0531bb082419')
+
+ СТРУКТУРА ТАБЛИЦЫ 'payment_entity'
+  id - varchar(255)
+  amount - int
+  created - datetime(6)
+  status - varchar(255)
+  transaction_id - varchar(255)
+
+ ПЕРВЫЕ 5 ЗАПИСЕЙ В ТАБЛИЦЕ 'payment_entity'
+  ('027bdba6-e010-436e-8a94-cc5b106c2c8b', 4500000, datetime.datetime(2026, 6, 16, 6, 7, 27, 864000), 'APPROVED', 'eba9ea08-e69f-4b9d-b656-6768485c6633')
+  ('07297831-f2c5-4488-9a02-92498f852838', 4500000, datetime.datetime(2026, 6, 16, 6, 41, 55, 47000), 'APPROVED', '22f8f7dd-368d-4cb5-a44e-f86acea72d4f')
+  ('10c80b99-c780-4c36-ac11-3194779d0a78', 4500000, datetime.datetime(2026, 6, 16, 6, 42, 40, 789000), 'APPROVED', 'f88a236d-ac51-4214-9f37-3e1134fd365a')
+  ('150447fc-34f3-44ac-98e9-6d9411ebad0d', 4500000, datetime.datetime(2026, 6, 16, 6, 10, 10, 645000), 'APPROVED', '2657621f-0db0-4af8-950c-b325b888f3c4')
+  ('15b3c527-31e4-4458-9edb-9257b66d8382', 4500000, datetime.datetime(2026, 6, 16, 6, 12, 49, 257000), 'APPROVED', '554ae06d-423e-4069-a551-f507fad7e3e8')

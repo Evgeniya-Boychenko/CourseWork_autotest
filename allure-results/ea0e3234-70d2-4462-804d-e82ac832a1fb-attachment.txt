@@ -1,0 +1,38 @@
+
+ СПИСОК ТАБЛИЦ В БАЗЕ
+- credit_request_entity
+- order_entity
+- payment_entity
+
+ СТРУКТУРА ТАБЛИЦЫ 'credit_request_entity'
+  id - varchar(255)
+  bank_id - varchar(255)
+  created - datetime(6)
+  status - varchar(255)
+
+ ПЕРВЫЕ 5 ЗАПИСЕЙ В ТАБЛИЦЕ 'credit_request_entity'
+
+ СТРУКТУРА ТАБЛИЦЫ 'order_entity'
+  id - varchar(255)
+  created - datetime(6)
+  credit_id - varchar(255)
+  payment_id - varchar(255)
+
+ ПЕРВЫЕ 5 ЗАПИСЕЙ В ТАБЛИЦЕ 'order_entity'
+  ('2f21cc90-2613-46d8-9edf-da604ac53177', datetime.datetime(2026, 6, 15, 6, 1, 28, 296000), None, 'b5fcac56-764a-43fb-bceb-46c15ce26810')
+  ('7bdbeed0-c471-41a5-baea-9d0b6d43f731', datetime.datetime(2026, 6, 15, 6, 1, 43, 328000), None, '1164eabd-e640-411b-8b04-98eeb706ec4c')
+  ('a4628bf6-d56b-4d5f-a5bc-5ba2a47ee19b', datetime.datetime(2026, 6, 15, 4, 19, 12, 716000), None, '5267c951-78c3-446d-bc04-ed77258d0161')
+  ('d8d4ee55-6919-4016-8c3d-aba0e8c135ae', datetime.datetime(2026, 6, 15, 4, 18, 58, 485000), None, 'ae8b3cd5-a0c9-4d95-a8d9-2748b74c0396')
+
+ СТРУКТУРА ТАБЛИЦЫ 'payment_entity'
+  id - varchar(255)
+  amount - int
+  created - datetime(6)
+  status - varchar(255)
+  transaction_id - varchar(255)
+
+ ПЕРВЫЕ 5 ЗАПИСЕЙ В ТАБЛИЦЕ 'payment_entity'
+  ('bcf16dc1-4048-469a-b0be-bd6469c98a58', 4500000, datetime.datetime(2026, 6, 15, 6, 1, 28, 223000), 'APPROVED', 'b5fcac56-764a-43fb-bceb-46c15ce26810')
+  ('d200c955-293b-4e1f-95b2-7d9f175ff43e', 4500000, datetime.datetime(2026, 6, 15, 4, 18, 58, 389000), 'APPROVED', 'ae8b3cd5-a0c9-4d95-a8d9-2748b74c0396')
+  ('e46214a8-2a87-4d94-aa93-637c625a84f7', 4500000, datetime.datetime(2026, 6, 15, 4, 19, 12, 688000), 'DECLINED', '5267c951-78c3-446d-bc04-ed77258d0161')
+  ('fb16f25a-9523-4cbf-b38c-29a115d9c816', 4500000, datetime.datetime(2026, 6, 15, 6, 1, 43, 301000), 'DECLINED', '1164eabd-e640-411b-8b04-98eeb706ec4c')
