@@ -68,91 +68,56 @@ class DebitFormPage:
         )
         button.click()
 
-    def wait_for_notification(self):
-        """Подождать появления сообщения"""
-        WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located(self.NOTIFICATION)
-        )
-
     def get_full_notification_text(self):
         """Получить весь текст уведомления"""
         notification = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(self.NOTIFICATION)
+            EC.visibility_of_element_located(self.NOTIFICATION)
         )
         title = notification.find_element(By.CSS_SELECTOR, ".notification__title").text
         content = notification.find_element(By.CSS_SELECTOR, ".notification__content").text
         return f"{title} {content}"
 
-    # def get_notification(self):
-    #     """Получить сообщение"""
-    #     element =self.driver.find_element(*self.NOTIFICATION)
-    #     return element.text
-    #
-    # def get_notification_title(self):
-    #     """Получить заголовок сообщения"""
-    #     element = self.driver.find_element(*self.NOTIFICATION_TITLE)
-    #     return element.text
-    #
-    # def get_notification_text(self):
-    #     """Получить текст сообщения"""
-    #     element = self.driver.find_element(*self.NOTIFICATION_TEXT)
-    #     return element.text
-
     def get_card_number_error(self):
         """Получить текст ошибки под полем номера карты"""
-        try:
-            WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(self.CARD_NUMBER_ERROR)
+        WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located(self.CARD_NUMBER_ERROR)
             )
-            error = self.driver.find_element(*self.CARD_NUMBER_ERROR)
-            return error.text
-        except:
-            return ""
-
+        error = self.driver.find_element(*self.CARD_NUMBER_ERROR)
+        return error.text
 
     def get_month_error(self):
         """Получить текст ошибки под полем месяца"""
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(self.MONTH_ERROR)
-            )
-            error = self.driver.find_element(*self.MONTH_ERROR)
-            return error.text
-        except:
-            return ""
+        WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located(self.MONTH_ERROR)
+        )
+        error = self.driver.find_element(*self.MONTH_ERROR)
+        return error.text
 
     def get_year_error(self):
         """Получить текст ошибки под полем года"""
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(self.YEAR_ERROR)
-            )
-            error = self.driver.find_element(*self.YEAR_ERROR)
-            return error.text
-        except:
-            return ""
+        WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located(self.YEAR_ERROR)
+        )
+        error = self.driver.find_element(*self.YEAR_ERROR)
+        return error.text
 
     def get_owner_error(self):
         """Получить текст ошибки под полем владелец"""
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(self.OWNER_ERROR)
-            )
-            error = self.driver.find_element(*self.OWNER_ERROR)
-            return error.text
-        except:
-            return ""
+        WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located(self.OWNER_ERROR)
+        )
+        error = self.driver.find_element(*self.OWNER_ERROR)
+        return error.text
 
     def get_cvc_error(self):
         """Получить текст ошибки под полем CVC"""
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(self.CVC_ERROR)
-            )
-            error = self.driver.find_element(*self.CVC_ERROR)
-            return error.text
-        except:
-            return ""
+
+        WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located(self.CVC_ERROR)
+        )
+        error = self.driver.find_element(*self.CVC_ERROR)
+        return error.text
+
 
 
 

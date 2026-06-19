@@ -9,25 +9,19 @@ from pages.debit_form_page import DebitFormPage
 Тест проверяет оплату с некорректным данным поля 'владелец' (100+ символов)
 1. Переход на страницу приложения
 2. Нажатие кнопки 'Купить'
-3. Ввод невалидных данных в поле владелец ('ivan ivanov' * 10)
-4. Ввод валидных данных в остальные поля (карта: 1111 2222 3333 4444, месяц: 06, год: 27, cvc: 123)
-5. Нажатие кнопки 'Продолжить'
-6. Проверка появления сообщения "Успешно" (валидация не сработала)
+3. Ввод валидных данных в поля (формируются динамически)
+4. Нажатие кнопки 'Продолжить'
+5. Проверка появления сообщения "Успешно" (валидация не сработала)
 """)
-@pytest.mark.parametrize("owner_long, expected_text", [
-    ('ivan ivanov ' * 10, "Успешно"),
-    ])
-def test_invalid_owner_name_bug(page, base_url, owner_long, expected_text):
+def test_invalid_owner_name_bug(page, base_url, valid_card, valid_month, valid_year, owner_long, valid_cvc):
     page.get(base_url)
     debit_page = DebitFormPage(page)
     debit_page.click_buy_button()
-    debit_page.fill_card_number('1111222233334444')
-    debit_page.fill_month('06')
-    debit_page.fill_year('27')
+    debit_page.fill_card_number(valid_card)
+    debit_page.fill_month(valid_month)
+    debit_page.fill_year(valid_year)
     debit_page.fill_owner(owner_long)
-    debit_page.fill_cvc('123')
+    debit_page.fill_cvc(valid_cvc)
     debit_page.submit_button()
-    debit_page.wait_for_notification()
-
     notification_text = debit_page.get_full_notification_text()
-    assert expected_text in notification_text
+    assert "Успешно" in notification_text
