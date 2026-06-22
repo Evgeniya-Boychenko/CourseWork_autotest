@@ -34,7 +34,7 @@ jobs:
 
       # 5. Запускаем MySQL в Docker
       - name: Start MySQL
-        run: docker-compose up -d
+        run: docker compose up -d
 
       # 6. Ждём, пока MySQL запустится
       - name: Wait for MySQL
