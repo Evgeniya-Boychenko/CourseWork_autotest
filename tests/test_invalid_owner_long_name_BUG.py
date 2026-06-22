@@ -24,4 +24,4 @@ def test_invalid_owner_name_bug(page, base_url, valid_card, valid_month, valid_y
     debit_page.fill_cvc(valid_cvc)
     debit_page.submit_button()
     notification_text = debit_page.get_full_notification_text()
-    assert "Успешно" in notification_text
+    assert "Операция одобрена" in notification_text
