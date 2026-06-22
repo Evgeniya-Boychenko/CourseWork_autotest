@@ -1,0 +1,64 @@
+name: Autotests CI
+on:
+  push:
+    branches: [ "main", "master", "feature/ci" ]
+  workflow_dispatch: # Позволяет запустить тесты вручную из интерфейса GitHub
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Скачиваем код из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Устанавливаем Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Устанавливаем библиотеки из requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Устанавливаем Java
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      # 5. Запускаем MySQL в Docker
+      - name: Start MySQL
+        run: docker-compose up -d
+
+      # 6. Ждём, пока MySQL запустится
+      - name: Wait for MySQL
+        run: sleep 30
+
+      # 7. Запускаем приложение aqa-shop.jar в фоновом режиме
+      - name: Start Application
+        run: |
+          nohup java -jar aqa-shop.jar > app.log 2>&1 &
+
+      # 8. Ждём, пока приложение запустится
+      - name: Wait for Application
+        run: sleep 30
+
+      # 9. Запускаем тесты
+      - name: Run tests
+        run: pytest tests/ -v --alluredir=./allure-results
+        continue-on-error: true
+
+      # 10. Сохраняем результаты Allure
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 5
