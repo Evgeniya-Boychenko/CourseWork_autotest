@@ -9,50 +9,41 @@
 
 ### Prerequisites
 
-ОС Windows 10/11  
-Python версии 3.10 и выше  
-браузер (Chrome) - для выхода в Интернет, запуска автотестов  
-PyMySQL -библиотека для подключения к БД  
-Git - для доступа к проекту  
-Docker + Docker Compose - для запуска БД MySQL в контейнере  
-Java - для работы приложения  
-Selenium - для автоматизации веб-тестирования  
-pytest - фреймворк для запуска тестов  
-allure-pytest - для генерации визуальных HTML отчетов  
-Любой текстовый редактор (VS Cоde) - для доступа к коду  
-Необходимо скачать файл [aqa-shop.jar](https://github.com/netology-code/aqa-qamid-diplom/blob/main/aqa-shop.jar)  
-Файл с учетными данными и подключениями [application.properties](https://github.com/netology-code/aqa-qamid-diplom/blob/main/application.properties)  
+- ОС Windows 10/11
+- Python 3.10 и выше
+- Браузер Google Chrome
+- Git
+- Docker + Docker Compose
+- Java (JRE/JDK 8 или выше)
+- Любой текстовый редактор (VS Code, PyCharm и др.)
 
 ### Установка и запуск
 
-1. Клонирование репозитория: 
-   командой git clone [по ссылке](https://github.com/Evgeniya-Boychenko/CourseWork_autotest)
-   
-2. Установка зависимостей Python
+1.Установка зависимостей Python
 - Cоздание виртуального окружения: python -m venv venv
-- Активация: venv/Scripts/activate
+- Активация: source venv/Scripts/activate
 - Установка библиотек: pip install -r requirements.txt
 
-3. Запуск базы данных (Docker)
+2. Запуск базы данных (Docker)
 - Команда: docker-compose up -d
 - Чтобы проверить, что база запустилась:
-  1. Открыть программу Docker Desktop.
+  1. От\крыть программу Docker Desktop.
   2. В левом меню нажать вкладку Containers
   3. В списке должна быть строка с именем aqa_shop
   4. Слева от имени должен быть зеленый кружок.
   
 
-4. Запуск тестируемого приложения
+3. Запуск тестируемого приложения
 - Команда: java -jar aqa-shop.jar
 - Адрес по которому открывается приложение: http://localhost:8080
-- Чтобы проверить, что приложение запустилось перейти по ссылке http://localhost:8080
+- Чтобы проверить, что приложение запустилось, перейти по ссылке http://localhost:8080
 
 ### Запуск тестов
 - Команда для запуска тестов: pytest
 - Команда для запуска с генерацией Allure:  
-1 Команда собирает данные
+1 собирает данные
   pytest tests/ --alluredir=./allure-results  
-2 Команда открывает отчет в браузере
+2 открывает отчет в браузере
   allure serve ./allure-results
 
 ### Остановка окружения
@@ -60,7 +51,7 @@ allure-pytest - для генерации визуальных HTML отчето
 Остановить базу данных:  в терминале docker-compose down
 
 ### Примеры
-После запуска тестов в терминале отображается: 16 passed, 1 xfailed   
+После запуска тестов в терминале отображается: 15 passed, 1 failed.   
 Отчёт Allure автоматически открывается в браузере с детальной статистикой.
 [скрин отчета](docs/screenshots/report_allure_all_tests.png)
 
